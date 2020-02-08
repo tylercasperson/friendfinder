@@ -9,9 +9,10 @@
     <link href="./style/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="../data/friends.js"></script>
 </head>
 <body>
-<div class="main">
+<form name="friendFinder" class="main">
     <br>
     <h3>Survey Questions</h3>
     <hr class="my-4">
@@ -154,7 +155,7 @@
         <br>
         <br>
         <br>
-        <button>Submit</button>
+        <button type="submit">Submit</button>
     </div>
     <br>
     <div class="links">
@@ -164,6 +165,57 @@
             <a href="https://github.com/tylercasperson/friendfinder">GitHub Repo</a>
         </h6>
     </div>
-</div>
+</form>
+<script>
+        var scores=[
+            2, 
+            2, 
+            3, 
+            5, 
+            1, 
+            3, 
+            5, 
+            5, 
+            2, 
+            3
+        ]
+
+        var another = [1,
+            5,
+            5,
+            3,
+            3,
+            2,
+            5,
+            4,
+            2,
+            4
+        ]
+
+        console.log(scores);
+        console.log(another);
+        var eachFriend = [];
+        for(var i = 0; i<scores.length;i++){
+            if(scores[i]-another[i]<0){
+                eachFriend.push((scores[i]-another[i])*-1);
+            } else {
+                eachFriend.push(scores[i]-another[i]);
+            }            
+        }
+        console.log(eachFriend);
+        
+        var newScore = eachFriend.reduce(add);
+        console.log(newScore);
+
+        function add(a,b){
+            return a + b;
+        }
+
+        console.log(Math.min.apply(null, scores));
+
+        console.log(friendData[1].scores);
+
+</script>
+
 </body>
 </html>
