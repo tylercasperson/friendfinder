@@ -17,7 +17,6 @@ module.exports = function(app){
         var newbieResponse = newbie.scores;
         var compareNewbie = [];
 
-        console.log(friendsList.length);
         for(var x=0;x<friendsList.length-1;x++){
             var comparison = [];
             for(var i = 0; i<newbieResponse.length;i++){
@@ -31,6 +30,7 @@ module.exports = function(app){
             compareNewbie.push(totalScore);
         }
         console.log(compareNewbie);
-        var bestMatch = Math.min.apply(null, compareNewbie);            
+        var bestMatch = Math.min.apply(null, compareNewbie); 
+        console.log(bestMatch);           
     })
 };
