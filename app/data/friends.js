@@ -1,4 +1,4 @@
-var friendData = [
+var friends = [
     {
         'name':'Becca',
         'photo':'../public/assets/images/BeccaTheFluff.png',
@@ -207,4 +207,6 @@ var friendData = [
             3
         ]
     }
-]
+];
+
+module.exports.friends = friends;

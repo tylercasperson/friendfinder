@@ -6,6 +6,11 @@ module.exports = function(app){
     });
 
     app.post('/api/friends', function(req, res) {
+        
+        // var newbieName = req.
+        var questionResults = req.body;
+
+
 
     })
 }
