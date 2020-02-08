@@ -20,15 +20,15 @@
     <div class="aboutYou">
         <h3>About You</h3>
         <h5>Name (Required)</h5>
-        <input type="text">
+        <input type="text" class="required" id="name">
         <h5>Link to Photo (Required)</h5>
-        <input type="text">
+        <input type="text" class="required" id="photo">
     </div>
     <hr class="my-4">
     <div class="questions">
         <h3>Question 1</h3>
         <h5>You are very adventurous when it comes to food.</h5>
-        <select name="question1">
+        <select id="question1" class="required">
             <option value="none" selected disabled hidden>What do you think?</option>
             <option value="1">1 (strongly disagree)</option>
             <option value="2">2</option>
@@ -41,7 +41,7 @@
         <br>
         <h3>Question 2</h3>
         <h5>Complicated problems are visualized before being attempted.</h5>
-        <select name="question1" display="">
+        <select id="question2" class="required">
             <option value="none" selected disabled hidden>What do you think?</option>
             <option value="1">1 (strongly disagree)</option>
             <option value="2">2</option>
@@ -54,7 +54,7 @@
         <br>
         <h3>Question 3</h3>
         <h5>Spelling is a mystery.</h5>
-        <select name="question1">
+        <select id="question3" class="required">
             <option value="none" selected disabled hidden>What do you think?</option>
             <option value="1">1 (strongly disagree)</option>
             <option value="2">2</option>
@@ -67,7 +67,7 @@
         <br>
         <h3>Question 4</h3>
         <h5>You’re a good listener.</h5>
-        <select name="question1">
+        <select id="question4" class="required">
             <option value="none" selected disabled hidden>What do you think?</option>
             <option value="1">1 (strongly disagree)</option>
             <option value="2">2</option>
@@ -80,7 +80,7 @@
         <br>
         <h3>Question 5</h3>
         <h5>Saying hi to a new person is considered adventurous.</h5>
-        <select name="question1">
+        <select id="question5" class="required">
             <option value="none" selected disabled hidden>What do you think?</option>
             <option value="1">1 (strongly disagree)</option>
             <option value="2">2</option>
@@ -93,7 +93,7 @@
         <br>
         <h3>Question 6</h3>
         <h5>Learning new concepts is fun.</h5>
-        <select name="question1">
+        <select id="question6" class="required">
             <option value="none" selected disabled hidden>What do you think?</option>
             <option value="1">1 (strongly disagree)</option>
             <option value="2">2</option>
@@ -106,7 +106,7 @@
         <br>
         <h3>Question 7</h3>
         <h5>Reading helps with day-to-day tasks.</h5>
-        <select name="question1">
+        <select id="question7" class="required">
             <option value="none" selected disabled hidden>What do you think?</option>
             <option value="1">1 (strongly disagree)</option>
             <option value="2">2</option>
@@ -119,7 +119,7 @@
         <br>
         <h3>Question 8</h3>
         <h5>More introverted than extroverted.</h5>
-        <select name="question1">
+        <select id="question8" class="required">
             <option value="none" selected disabled hidden>What do you think?</option>
             <option value="1">1 (strongly disagree)</option>
             <option value="2">2</option>
@@ -132,7 +132,7 @@
         <br>
         <h3>Question 9</h3>
         <h5>Classical music for relazation.</h5>
-        <select name="question1">
+        <select id="question9" class="required">
             <option value="none" selected disabled hidden>What do you think?</option>
             <option value="1">1 (strongly disagree)</option>
             <option value="2">2</option>
@@ -145,7 +145,7 @@
         <br>
         <h3>Question 10</h3>
         <h5>You’re always on time.</h5>
-        <select name="question1">
+        <select id="question10" class="required">
             <option value="none" selected disabled hidden>What do you think?</option>
             <option value="1">1 (strongly disagree)</option>
             <option value="2">2</option>
@@ -156,6 +156,7 @@
         <br>
         <br>
         <br>
+        
         <button type="submit">Submit</button>
     </div>
     <br>
@@ -167,7 +168,58 @@
         </h6>
     </div>
 </form>
+<button onclick="captureData()">ConsoleLog</button>
 <script>
+
+    function captureData(){
+        var newbieName = $("#name").val();
+        var newbiePhoto = $("#photo").val();
+        var newbieResponse = [];
+
+        for(var i = 1; i<11;i++){
+            newbieResponse.push($("#question" + i).val());
+        }
+        console.log(newbieName);
+        console.log(newbiePhoto);
+        console.log(newbieResponse);
+
+        console.log(newbieResponse.indexOf(null) === -1);
+        if (!(newbieResponse.indexOf(null) === -1) || newbieName === "" || newbiePhoto === ""){
+            alert("Please fill in the missing information.")
+            return;
+        }
+
+        //compareData();
+    }
+
+    function compareData(){
+
+        console.log(scores);
+        console.log(another);
+        var eachFriend = [];
+        for(var i = 0; i<scores.length;i++){
+            if(scores[i]-another[i]<0){
+                eachFriend.push((scores[i]-another[i])*-1);
+            } else {
+                eachFriend.push(scores[i]-another[i]);
+            }            
+        }
+        console.log(eachFriend);
+        
+        var newScore = eachFriend.reduce(add);
+        console.log(newScore);
+
+        function add(a,b){
+            return a + b;
+        }
+
+        console.log(Math.min.apply(null, scores));
+
+
+    }
+
+
+
         var scores=[
             2, 
             2, 
@@ -193,30 +245,10 @@
             4
         ]
 
-        console.log(scores);
-        console.log(another);
-        var eachFriend = [];
-        for(var i = 0; i<scores.length;i++){
-            if(scores[i]-another[i]<0){
-                eachFriend.push((scores[i]-another[i])*-1);
-            } else {
-                eachFriend.push(scores[i]-another[i]);
-            }            
-        }
-        console.log(eachFriend);
-        
-        var newScore = eachFriend.reduce(add);
-        console.log(newScore);
 
-        function add(a,b){
-            return a + b;
-        }
+        // console.log(friendData[1].scores);
 
-        console.log(Math.min.apply(null, scores));
-
-        console.log(friendData[1].scores);
-
-        console.log(document.querySelector(option));
+        // console.log(document.querySelector(option));
 
 </script>
 
