@@ -1,7 +1,7 @@
 var friends = [
     {
         'name':'Becca',
-        'photo':'../public/assets/images/BeccaTheFluff.png',
+        'photo':'https://cdn.pixabay.com/photo/2012/04/13/21/31/fish-33712_1280.png',
         'scores':[
             2, 
             2, 
@@ -17,7 +17,7 @@ var friends = [
     },
     {
         'name':'Bob',
-        'photo':'../public/assets/images/BobThePanda.png',
+        'photo':'https://cdn.pixabay.com/photo/2016/12/08/15/45/panda-1892023_1280.png',
         'scores':[
             1,
             5,
@@ -33,7 +33,7 @@ var friends = [
     },
     {
         'name':'Brandon',
-        'photo':'../public/assets/images/BrandonTheFrog.png',
+        'photo':'https://cdn.pixabay.com/photo/2017/02/01/11/04/animal-2029675_1280.png',
         'scores':[
             1,
             4,
@@ -49,7 +49,7 @@ var friends = [
     },
     {
         'name':'Eric',
-        'photo':'../public/assets/images/EricTheFox.png',
+        'photo':'https://cdn.pixabay.com/photo/2014/12/21/23/58/fox-576494_1280.png',
         'scores':[
             2,
             4,
@@ -65,7 +65,7 @@ var friends = [
     },
     {
         'name':'Gus',
-        'photo':'../public/assets/images/GusTheElephant.png',
+        'photo':'https://cdn.pixabay.com/photo/2012/04/02/14/27/bee-24638_1280.png',
         'scores':[
             2,
             3,
@@ -81,7 +81,7 @@ var friends = [
     },
     {
         'name':'Jenny',
-        'photo':'../public/assets/images/JennyTheCow.png',
+        'photo':'https://cdn.pixabay.com/photo/2013/07/13/11/44/cow-158552_1280.png',
         'scores':[
             4,
             3,
@@ -97,7 +97,7 @@ var friends = [
     },
     {
         'name':'Meg',
-        'photo':'../public/assets/images/MegTheShark.png',
+        'photo':'https://cdn.pixabay.com/photo/2017/05/16/10/10/shark-2317422_1280.png',
         'scores':[
             1,
             5,
@@ -113,7 +113,7 @@ var friends = [
     },
     {
         'name':'Pinky',
-        'photo':'../public/assets/images/PinkyTheDragon.png',
+        'photo':'https://cdn.pixabay.com/photo/2016/04/01/09/29/cartoon-1299393_1280.png',
         'scores':[
             4,
             3,
@@ -129,7 +129,7 @@ var friends = [
     },
     {
         'name':'Sparky',
-        'photo':'../public/assets/images/SparkyTheFluff.jpg',
+        'photo':'https://cdn.pixabay.com/photo/2016/06/16/08/42/monster-1460885_1280.png',
         'scores':[
             4,
             2,
@@ -145,7 +145,7 @@ var friends = [
     },
     {
         'name':'Squeaky',
-        'photo':'../public/assets/images/SqueakyThePenguin.png',
+        'photo':'https://cdn.pixabay.com/photo/2013/07/13/11/44/penguin-158551_1280.png',
         'scores':[
             5,
             4,
@@ -161,7 +161,7 @@ var friends = [
     },
     {
         'name':'Stacy',
-        'photo':'../public/assets/images/StacyTheCat.png',
+        'photo':'https://cdn.pixabay.com/photo/2016/03/31/23/37/animal-1297724_1280.png',
         'scores':[
             5,
             1,
@@ -177,7 +177,7 @@ var friends = [
     },
     {
         'name':'Steve',
-        'photo':'../public/assets/images/Steve.jpg',
+        'photo':'https://cdn.pixabay.com/photo/2015/05/14/15/55/character-766935_1280.jpg',
         'scores':[
             1,
             4,
@@ -193,7 +193,7 @@ var friends = [
     },
     {
         'name':'Stu',
-        'photo':'../public/assets/images/StuTheBird.png',
+        'photo':'https://cdn.pixabay.com/photo/2016/10/27/08/02/bird-1773631_1280.png',
         'scores':[
             3,
             1,
@@ -209,4 +209,4 @@ var friends = [
     }
 ];
 
-module.exports.friends = friends;
+module.exports = friends;

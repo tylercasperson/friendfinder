@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link href="./assets/css/reset.css">
-    <link href="./assets/css/style.css">
+    <title>Friend Finder</title>
+    <link rel="stylesheet" type="text/css" href="./assets/css/reset.css" >
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.css" >
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -162,7 +162,7 @@
     <br>
     <div class="links">
         <h6>
-            <a href="https://friend-finder-fsf.herokuapp.com/api/friends">API Food-Friends List</a>
+            <a href="https://friend-finder-fsf.herokuapp.com/api/friends">API Friends List</a>
             |  
             <a href="https://github.com/tylercasperson/friendfinder">GitHub Repo</a>
         </h6>
@@ -170,41 +170,48 @@
 </div>
 </div>
 
-<!-- Modal -->
-<div id="modal">
-    <div class="modalContent">
-        <span class="close">&times;</span>
-        <div class="bestMatch">hello</div>
-    </div>
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>Your best match is...</p>
+    <div id="matchName"></div>
+    <div id="matchImage"></div>
+  </div>
+
 </div>
 
 <script>
 
-    var modal =  document.getElementById("modal");
-    var btn = document.getElementById("submit");
-    var span = document.getElementsByClassName("close")[0];
 
-    console.log(modal);
+// Get the modal
+var modal = document.getElementById("myModal");
 
-    btn.onclick = function() {
-        modal.style.display = "block";
-    }
+// Get the button that opens the modal
+var btn = document.getElementById("submit");
 
-    span.onclick = function() {
-        modal.style.display = "none";
-    }
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
 
-    window.onclick = function(event) {
-        if(event.target == modal){
-            modal.style.display = "none";
-        }
-    }
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
 
     function captureData(){
         var newbieName = $("#name").val();
         var newbiePhoto = $("#photo").val();
         var newbieResponse = [];
-
+        console.log('1');
         for(var i = 1; i<11;i++){
             newbieResponse.push($("#question" + i).val());
         }
@@ -217,6 +224,7 @@
             alert("Please fill in the missing information.")
             return;
         }
+        console.log('1');
 
         var newbieData = {
                 name:newbieName,
@@ -228,8 +236,14 @@
         $.post("/api/friends", newbieData,
             function(data){
                 console.log(data);
+                console.log('0', data.name);
+                console.log(data.photo);
+                $("#matchName").text(data.name);
+                $("#matchImage").append("<img src='" + data.photo + "' alt='bestMatch' width='200px' />");
             }
         );
+    // When the user clicks the button, open the modal 
+      modal.style.display = "block";
     }
 
 </script>
