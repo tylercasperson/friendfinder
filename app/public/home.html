@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link href="./style/style.css">
+    <link href="./assets/css/reset.css">
+    <link href="./assets/css/style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
-<body>
+<body onload="potentialFriends()">
     <div class="main">
         <div class="jumbotron">
             <h1 class="display-4">Friend Finder</h1>
@@ -18,6 +19,17 @@
             <a class="btn btn-primary btn-lg" href="./survey.html" role="button">Get started</a>
         </div>
         <br>
+        <div>
+            
+        </div>
+        <div class="container pictureBox"> 
+            <div class="row">
+                <div class="col-md-12 picture1"></div>
+                <div class="col-md-12 picture2"></div>
+            </div>
+        </div>
+
+
         <div class="links">
             <h6>
                 <a href="https://friendfinder-match.herokuapp.com/api/friends">API Friends List</a>
@@ -26,5 +38,51 @@
             </h6>
         </div>
     </div>
+
+    <script>
+        
+        function potentialFriends(){
+            var putPicHere1 = document.querySelector(".picture1");
+            var putPicHere2 = document.querySelector(".picture2");
+    
+            $.get("/api/friends")
+                .then(function getData(res){
+                    for(var m=0;m<5;m++){
+                        var friendPicture1 = document.createElement("IMG");
+                        friendPicture1.setAttribute("src", res[m+2].photo);
+                        friendPicture1.setAttribute("alt", m+2);
+                        friendPicture1.setAttribute("width", "200px");
+                        friendPicture1.setAttribute("class", "friend");
+                        friendPicture1.src = res[m+2].photo;
+                        putPicHere1.appendChild(friendPicture1);
+                
+
+
+                        
+                        // console.log(n);
+
+                        var friendPicture2 = document.createElement("IMG");
+                        friendPicture2.setAttribute("src", res[m+7].photo);
+                        friendPicture2.setAttribute("alt", m+7);
+                        friendPicture2.setAttribute("width", "200px");
+                        friendPicture2.setAttribute("class", "friend");
+                        friendPicture2.src = res[m+7].photo;
+                        putPicHere2.appendChild(friendPicture2);
+
+
+
+                    };
+                })
+            }
+
+        // $.post("/api/friends", newbieData,
+        //         function(data){
+        //             console.log(data);
+        //             console.log('0', data.name);
+        //             console.log(data.photo);
+        //             $("#matchName").text(data.name);
+        //             $("#matchImage").append("<img src='" + data.photo + "' alt='bestMatch' width='200px' />");
+        //         }
+    </script>
 </body>
 </html>
